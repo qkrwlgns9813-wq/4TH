@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 평생학습 맞춤 추천 - 데이터 기반 분석 시스템</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard+Variable:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <strong>EDU ADVISOR</strong>
+            </div>
+            <div class="nav-tagline">전국 평생학습 데이터 분석 시스템</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1>당신을 위한 최적의 <br><span class="highlight">평생학습 경로</span>를 설계합니다.</h1>
+                <p>개인의 성향, 생활 환경, 학습 목적을 종합 분석하여 <br>데이터 기반의 맞춤형 강좌를 추천해 드립니다.</p>
+                <button id="start-btn" class="btn btn-primary btn-hero">지금 분석 시작하기</button>
+            </div>
+        </section>
+
+        <!-- Survey Section -->
+        <section id="survey" class="section hidden">
+            <div class="section-title">
+                <h2>📋 학습자 정밀 진단 설문</h2>
+                <p>더 정확한 추천을 위해 꼼꼼하게 응답해 주세요.</p>
+            </div>
+
+            <form id="recommendation-form" class="survey-form">
+                <!-- Group 1: 개인 성향 -->
+                <div class="survey-card">
+                    <h3>1. 개인 성향 및 학습 배경</h3>
+
+                    <div class="form-group">
+                        <label>활동 성향</label>
+                        <div class="radio-tiles">
+                            <label><input type="radio" name="activity" value="active" required> <span>🏃 활동적인 것
+                                    선호</span></label>
+                            <label><input type="radio" name="activity" value="static"> <span>🧘 정적인 것 선호</span></label>
+                            <label><input type="radio" name="activity" value="both"> <span>🌓 상황에 따라 다름</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>평소 운동량</label>
+                        <select name="exercise" required>
+                            <option value="">운동 빈도 선택</option>
+                            <option value="none">거의 하지 않음</option>
+                            <option value="low">주 1~2회 가벼운 운동</option>
+                            <option value="high">주 3회 이상 규칙적 운동</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>전공 또는 전공 계열</label>
+                        <select name="major" required>
+                            <option value="">전공 선택</option>
+                            <option value="humanities">인문·사회</option>
+                            <option value="engineering">공학·기술</option>
+                            <option value="arts">예체능</option>
+                            <option value="medical">보건·의료</option>
+                            <option value="etc">기타</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>학습 목적</label>
+                        <select name="purpose" required>
+                            <option value="">학습 목적 선택</option>
+                            <option value="stress">스트레스 해소</option>
+                            <option value="growth">자기계발</option>
+                            <option value="career">직무 연계</option>
+                            <option value="explore">새로운 분야 탐색</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Group 2: 생활 여건 -->
+                <div class="survey-card">
+                    <h3>2. 생활 여건 및 현실 조건</h3>
+
+                    <div class="form-group">
+                        <label>월 수강 가능 비용</label>
+                        <div class="radio-tiles">
+                            <label><input type="radio" name="budget" value="0" required> <span>무료만</span></label>
+                            <label><input type="radio" name="budget" value="50000"> <span>5만원 이하</span></label>
+                            <label><input type="radio" name="budget" value="100000"> <span>10만원 이하</span></label>
+                            <label><input type="radio" name="budget" value="999999"> <span>제한 없음</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>주거 지역 (시/군/구)</label>
+                        <input type="text" name="location" placeholder="예: 서울특별시 강남구, 경기도 수원시 등" required>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="form-group">
+                            <label>선호 요일</label>
+                            <select name="day">
+                                <option value="any">요일 무관</option>
+                                <option value="weekday">평일</option>
+                                <option value="weekend">주말</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>선호 시간대</label>
+                            <select name="time">
+                                <option value="any">시간 무관</option>
+                                <option value="morning">오전 (09:00~12:00)</option>
+                                <option value="afternoon">오후 (12:00~18:00)</option>
+                                <option value="evening">저녁 (18:00~21:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-area">
+                    <button type="submit" class="btn btn-primary btn-wide">데이터 분석 및 추천 결과 보기 ✨</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Result Section -->
+        <section id="results" class="section hidden">
+            <div class="section-title">
+                <h2>📈 학습 진단 및 분석 결과</h2>
+                <p>귀하의 설문 데이터를 기반으로 한 다각도 분석 리포트입니다.</p>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-item card">
+                    <h4>성향 및 적합도 지수</h4>
+                    <canvas id="profileChart"></canvas>
+                </div>
+                <div class="analysis-item card">
+                    <h4>추천 강좌 유형 분포</h4>
+                    <canvas id="distributionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="expert-feedback card">
+                <h3>👨‍🏫 전문가 분석 리포트</h3>
+                <div id="expert-text" class="expert-content">
+                    <!-- Dynamic Expert Text -->
+                </div>
+            </div>
+
+            <div class="final-recommendations">
+                <h3>🎯 당신을 위한 TOP 추천 강좌</h3>
+                <div id="recommendation-list" class="course-list">
+                    <!-- Recommendation Cards -->
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button onclick="location.reload()" class="btn btn-outline">다시 분석하기</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>본 서비스는 전국 평생학습 강좌 표준 데이터를 기반으로 운영됩니다.</p>
+            <p>© 2026 Edu Advisor Data Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
